@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import deepxde as dde
-from sympy import Symbol, lambdify
-import sympy as sp
+
 from DuffingOscillator import DuffingOscillatorDynamics
 from DoubleGyre import DoubleGyreDynamics
 from BickleyJet import BickleyJetDynamics, BickleyJetDynamicsDerivs

@@ -1,4 +1,7 @@
 # DOUBLE GYRE MODEL
+
+import numpy as np
+
 def DoubleGyreDynamics(x, y, t, eps, alpha, A, omega):
 
     func = eps*np.sin(omega*t)* (x**2) + (1-2*eps*np.sin(omega*t))*x

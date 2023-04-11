@@ -1,4 +1,8 @@
 # BICKLEY JET MODEL
+
+from sympy import Symbol, lambdify
+import sympy as sp
+
 def BickleyJetDynamicsDerivs():
     
     X = Symbol('x', real=True)
