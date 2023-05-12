@@ -30,10 +30,10 @@ class DoubleGyre(nn.Module):
 
     def __init__(self):
         super().__init__()
-        self.eps = torch.nn.Parameter(-0.1*torch.rand(1) + 0.3)
-        self.alpha = torch.nn.Parameter(-0.1*torch.rand(1) + 0.3)
-        self.A = torch.nn.Parameter(-0.1*torch.rand(1) + 0.3)
-        self.omega = torch.nn.Parameter(-0.2*np.pi*torch.rand(1) + 2.1*np.pi)
+        self.eps = torch.nn.Parameter(-0.1*torch.rand(1) + 0.3, requires_grad=False)
+        self.alpha = torch.nn.Parameter(-0.1*torch.rand(1) + 0.3, requires_grad=False)
+        self.A = torch.nn.Parameter(-0.1*torch.rand(1) + 0.3, requires_grad=False)
+        self.omega = torch.nn.Parameter(-0.2*np.pi*torch.rand(1) + 2.1*np.pi, requires_grad=False)
     
     def DoubleGyreDynamics(self, y, t, eps, alpha, A, omega):
 
@@ -62,10 +62,10 @@ class BickleyJet(nn.Module):
         self.R0 = torch.nn.Parameter(-0.14*torch.rand(1) + 6.42)
         self.Dphix, self.Dphiy = self.BickleyJetDynamicsDerivs()
 
-    def BickleyJetDynamics(self, y, t, U0, L0, eps1, eps2, eps3, R0, Dphix, Dphiy):
+    def BickleyJetDynamics(self, y, t, U0, L0, eps1, eps2, eps3, R0):
 
-        xdot = Dphix(y[0], y[1], t, U0, L0, eps1, eps2, eps3, R0)
-        ydot = Dphiy(y[0], y[1], t, U0, L0, eps1, eps2, eps3, R0)
+        xdot = self.Dphix(y[0], y[1], t, U0, L0, eps1, eps2, eps3, R0)
+        ydot = self.Dphiy(y[0], y[1], t, U0, L0, eps1, eps2, eps3, R0)
 
         return [xdot, ydot]
 
@@ -101,4 +101,4 @@ class BickleyJet(nn.Module):
         return Dphix, Dphiy
 
     def forward(self, t, y): 
-        return torch.tensor(self.BickleyJetDynamics(y.T, t, self.U0, self.L0, self.eps1, self.eps2, self.eps3, self.R0, self.Dphix, self.Dphiy))
+        return torch.tensor(self.BickleyJetDynamics(y.T, t, self.U0, self.L0, self.eps1, self.eps2, self.eps3, self.R0))

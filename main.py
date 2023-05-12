@@ -40,14 +40,19 @@ DoubleGyreKNODE = KNODEDoubleGyre()
 BickleyJetKNODE = KNODEBickleyJet()
 
 DuffingKNODE = TrainNODENetwork(DuffingKNODE, yTrainD, tD, sizeD, batch_time, batch_sizeD)
-DoubleGyreKNODE = TrainNODENetwork(DoubleGyreKNODE, yTrainDG, tDG, sizeDG, batch_time, batch_sizeDG)
-BickleyJetKNODE = TrainNODENetwork(BickleyJetKNODE, yTrainBJ, tBJ, sizeBJ, batch_time, batch_sizeBJ)
+#DoubleGyreKNODE = TrainNODENetwork(DoubleGyreKNODE, yTrainDG, tDG, sizeDG, batch_time, batch_sizeDG)
+#BickleyJetKNODE = TrainNODENetwork(BickleyJetKNODE, yTrainBJ, tBJ, sizeBJ, batch_time, batch_sizeBJ)
 
 AT, KT = TestNODENetwork(DuffingActual, DuffingKNODE, IC_D[13], tD)
 
 plt.figure()
-for i in range(AT.shape[0]):
+
+plt.scatter(AT[0, 0,0], AT[0, 0,1], s=8, c='b', label='Actual')
+plt.scatter(KT[0, 0,0], AT[0, 0,1], s=8, c='r', label='KNODE')
+
+for i in range(1,AT.shape[0]):
     plt.scatter(AT[i, 0,0], AT[i, 0,1], s=8, c='b', label='Actual')
     plt.scatter(KT[i, 0,0], AT[i, 0,1], s=8, c='r', label='KNODE')
-    plt.legend()
+
+plt.legend()
 plt.show()
