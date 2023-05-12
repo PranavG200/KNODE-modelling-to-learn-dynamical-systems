@@ -1,26 +1,10 @@
 import matplotlib.pyplot as plt
-<<<<<<< HEAD
-=======
-import numpy as np
-<<<<<<< HEAD
->>>>>>> 98cab118871594355766d015a467f566878df94d
 from Dataset import GenerateData, GenerateTrainData
 import torch
 from Dynamics import DuffingOscillator, DoubleGyre, BickleyJet
 from KNODE import KNODEDuffing, KNODEDoubleGyre, KNODEBickleyJet, TrainNODENetwork, TestNODENetwork
-<<<<<<< HEAD
 
 
-=======
-=======
-import deepxde as dde
-
-from DuffingOscillator import DuffingOscillatorDynamics
-from DoubleGyre import DoubleGyreDynamics
-from BickleyJet import BickleyJetDynamics, BickleyJetDynamicsDerivs
->>>>>>> 1fca9b1bf5c361dc6daa7a949dbb0fe0e4334ee3
-
->>>>>>> 98cab118871594355766d015a467f566878df94d
 sizeD, sizeDG, sizeBJ = 40, 200, 400
 method = 'dopri5'
 batch_time = 10
