@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
-import numpy as np
 from Dataset import GenerateData, GenerateTrainData
 import torch
 from Dynamics import DuffingOscillator, DoubleGyre, BickleyJet
 from KNODE import KNODEDuffing, KNODEDoubleGyre, KNODEBickleyJet, TrainNODENetwork, TestNODENetwork
+
 
 sizeD, sizeDG, sizeBJ = 40, 200, 400
 method = 'dopri5'
@@ -39,7 +39,7 @@ DuffingKNODE = KNODEDuffing()
 DoubleGyreKNODE = KNODEDoubleGyre()
 BickleyJetKNODE = KNODEBickleyJet()
 
-DuffingKNODE = TrainNODENetwork(DuffingKNODE, yTrainD, tD, sizeD, batch_time, batch_sizeD, niters = 1000)
+DuffingKNODE = TrainNODENetwork(DuffingKNODE, yTrainD, tD, sizeD, batch_time, batch_sizeD)
 DoubleGyreKNODE = TrainNODENetwork(DoubleGyreKNODE, yTrainDG, tDG, sizeDG, batch_time, batch_sizeDG)
 BickleyJetKNODE = TrainNODENetwork(BickleyJetKNODE, yTrainBJ, tBJ, sizeBJ, batch_time, batch_sizeBJ)
 

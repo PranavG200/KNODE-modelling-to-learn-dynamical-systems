@@ -88,7 +88,7 @@ def mini_batch(y, t, size, time, batch_size):
 
     return batch_y0, batch_t, batch_y
 
-def TrainNODENetwork(Model, y, t, size, time, batch_size, niters=1500):
+def TrainNODENetwork(Model, y, t, size, time, batch_size, niters=300):
 
     optimizer = optim.Adam(Model.parameters(), lr=1e-2)
     criterion = nn.MSELoss()
